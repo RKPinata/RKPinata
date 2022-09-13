@@ -2,7 +2,11 @@
 
 ![](https://i.ibb.co/72Pg2b3/Danish-Banner.png)
 
-[![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=RKPinata&theme=vue-dark_icons=true)](https://github.com/RKPinata/github-readme-stats)
+<div align='center'>
+  <a href="https://github.com/anuraghazra/github-readme-stats">
+    <img  src="https://github-readme-stats.vercel.app/api?username=RKPinatashow_icons=true&theme=vue-dark"/>
+  </a>
+</div>
 
 ![visitors](https://visitor-badge.laobi.icu/badge?page_id=RKPinata.RKPinata)
 
