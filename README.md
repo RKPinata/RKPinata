@@ -1,7 +1,9 @@
 ### Hello fellow Developers <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/Hi.gif" width="29">, I'm [Danish!](https://bio.link/danishteuku)
 
 ![](https://i.ibb.co/72Pg2b3/Danish-Banner.png)
-[![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=RKPinata)](https://github.com/RKPinata/github-readme-stats)
+
+[![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=RKPinata&theme=vue-dark_icons=true)](https://github.com/RKPinata/github-readme-stats)
+
 ![visitors](https://visitor-badge.laobi.icu/badge?page_id=RKPinata.RKPinata)
 
 <!--
