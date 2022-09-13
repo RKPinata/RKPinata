@@ -8,13 +8,17 @@
   </a>
 </div>
 
-<div align='center'>
+## Github Stats
+<span />
+<div>
   <a href="https://github.com/anuraghazra/github-readme-stats">
     <img  src="https://github-readme-stats.vercel.app/api/top-langs/?username=RKPinata&theme=vue-dark"/>
   </a>
 </div>
 
-<p align="center">
+## Most Used Languages
+<span />
+<p>
 <a href="https://visitor-badge.laobi.icu/badge?page_id=RKPinata.RKPinata"><img alt="denish teuku github" src="https://visitor-badge.laobi.icu/badge?page_id=RKPinata.RKPinata"> </a>
 </p>  
 
