@@ -1,4 +1,8 @@
-### Hi there 👋
+### Hello fellow Developers <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/Hi.gif" width="29">, I'm [Danish!](https://bio.link/danishteuku)
+
+![](https://i.ibb.co/72Pg2b3/Danish-Banner.png)
+
+![visitors](https://visitor-badge.laobi.icu/badge?page_id=RKPinata.RKPinata)
 
 <!--
 **RKPinata/RKPinata** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
