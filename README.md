@@ -2,13 +2,15 @@
 
 ![](https://i.ibb.co/72Pg2b3/Danish-Banner.png)
 
+## Github Stats
+<span />
 <div align='center'>
   <a href="https://github.com/anuraghazra/github-readme-stats">
     <img  src="https://github-readme-stats.vercel.app/api?username=RKPinata&&show_icons=true&theme=vue-dark"/>
   </a>
 </div>
 
-## Github Stats
+## Most Used Languages
 <span />
 <div>
   <a href="https://github.com/anuraghazra/github-readme-stats">
@@ -16,8 +18,6 @@
   </a>
 </div>
 
-## Most Used Languages
-<span />
 <p>
 <a href="https://visitor-badge.laobi.icu/badge?page_id=RKPinata.RKPinata"><img alt="denish teuku github" src="https://visitor-badge.laobi.icu/badge?page_id=RKPinata.RKPinata"> </a>
 </p>  
