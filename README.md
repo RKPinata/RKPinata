@@ -12,6 +12,9 @@
 <a href="https://visitor-badge.laobi.icu/badge?page_id=RKPinata.RKPinata"><img alt="denish teuku github" src="https://visitor-badge.laobi.icu/badge?page_id=RKPinata.RKPinata"> </a>
 </p>  
 
+<p align="center">
+  [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=RKPinata)](https://github.com/RKPinata/github-readme-stats)
+</p>
 <!--
 **RKPinata/RKPinata** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
