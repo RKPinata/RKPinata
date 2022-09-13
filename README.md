@@ -8,10 +8,9 @@
   </a>
 </div>
 
-<a href="https://visitor-badge.laobi.icu/badge?page_id=RKPinata.RKPinata" align="center"><img alt="denish teuku github" src="https://visitor-badge.laobi.icu/badge?page_id=RKPinata.RKPinata"> </a>
-  
-
-
+<p align="center">
+<a href="https://visitor-badge.laobi.icu/badge?page_id=RKPinata.RKPinata"><img alt="denish teuku github" src="https://visitor-badge.laobi.icu/badge?page_id=RKPinata.RKPinata"> </a>
+</p>  
 
 <!--
 **RKPinata/RKPinata** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
