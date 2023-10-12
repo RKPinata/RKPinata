@@ -1,4 +1,5 @@
-### Hello fellow Developers <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/Hi.gif">, I'm [Danish!](https://bio.link/danishteuku)
+### Hello fellow Developers <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/Hi.gif" width="23">, 
+I'm [Danish!](https://bio.link/danishteuku)
 
 ![](https://i.ibb.co/72Pg2b3/Danish-Banner.png)
 
