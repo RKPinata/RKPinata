@@ -1,13 +1,10 @@
-### Hello fellow Developers <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/Hi.gif" width="23">, 
-I'm [Danish!](https://bio.link/danishteuku)
 
-![](https://i.ibb.co/72Pg2b3/Danish-Banner.png)
 
 ## Github Stats
 <span />
 <div>
   <a href="https://github.com/anuraghazra/github-readme-stats">
-    <img  src="https://github-readme-stats.vercel.app/api?username=RKPinata&&show_icons=true&theme=vue-dark"/>
+    
   </a>
 </div>
 
