@@ -253,6 +253,7 @@ ${blocks[0].lines.map((_, j) => `    <clipPath id="w${j}"><rect x="${X - 10}" y=
       <text x="90" y="152" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="68" font-weight="700" letter-spacing="-1" fill="#7cc4ff" opacity="0.35" filter="url(#textGlow)">Danish Roti</text>
       <text x="90" y="152" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="68" font-weight="700" letter-spacing="-1" fill="#f4f8ff">Danish Roti</text>
       <text x="93" y="192" ${mono} font-size="17" letter-spacing="1" fill="#b9d3ee">frontend engineer · tool builder · writer</text>
+      <text x="94" y="224" ${mono} font-size="11" letter-spacing="3.5" fill="#6b85a8">TYPESCRIPT · REACT · VUE · ASTRO · NODE · NEST</text>
     </g>
 
     <rect x="40" y="262" width="${W - 80}" height="${panelBottom - 262}" rx="14" fill="#020617" fill-opacity="0.62" stroke="#1e3a8a" stroke-opacity="0.7"/>
@@ -296,5 +297,5 @@ const markers = /(<!-- LOG:START -->)[\s\S]*?(<!-- LOG:END -->)/;
 const readme = readFileSync(README, 'utf8');
 if (!markers.test(readme)) throw new Error(`${README} has no LOG:START / LOG:END markers`);
 const latest = entries[0];
-const card = `<img width="100%" src="assets/bridge.svg?day=${latest.day}" alt="${xml(`Danish Roti: frontend engineer, tool builder, writer. Ship's log, day ${latest.day}: ${plain(latest.text)}`)}" />`;
+const card = `<a href="logbook.md"><img width="100%" src="assets/bridge.svg?day=${latest.day}" alt="${xml(`Danish Roti: frontend engineer, tool builder, writer. Ship's log, day ${latest.day}: ${plain(latest.text)}`)}" /></a>`;
 writeFileSync(README, readme.replace(markers, (_, open, close) => `${open}\n${card}\n${close}`));

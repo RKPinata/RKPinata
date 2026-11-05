@@ -59,8 +59,8 @@ export function sceneSvg(scale = 2) {
     <radialGradient id="shade" gradientUnits="userSpaceOnUse" cx="${px - pr * 0.75}" cy="${py - pr * 0.55}" r="${pr * 1.85}">
       <stop offset="0" stop-color="#ffffff" stop-opacity="0.22"/>
       <stop offset="0.28" stop-color="#000" stop-opacity="0"/>
-      <stop offset="0.5" stop-color="#000" stop-opacity="0.7"/>
-      <stop offset="0.66" stop-color="#000" stop-opacity="0.97"/>
+      <stop offset="0.5" stop-color="#000" stop-opacity="0.62"/>
+      <stop offset="0.7" stop-color="#000" stop-opacity="0.86"/>
     </radialGradient>
     <radialGradient id="halo" gradientUnits="userSpaceOnUse" cx="${px}" cy="${py}" r="${pr + 34}">
       <stop offset="${f(pr / (pr + 34) - 0.01)}" stop-color="#5aa9ff" stop-opacity="0"/>
@@ -84,6 +84,7 @@ export function sceneSvg(scale = 2) {
   </g>
   <rect width="${W}" height="${H}" filter="url(#lanes)" mask="url(#lane)" opacity="0.8"/>
   <circle cx="${px - pr - 70}" cy="${py + pr * 0.55}" r="12" fill="url(#moonShade)"/>
+  <circle cx="${px}" cy="${py}" r="${pr + 34}" fill="url(#halo)" opacity="0.35"/>
   <circle cx="${px}" cy="${py}" r="${pr + 34}" fill="url(#halo)" mask="url(#lit)"/>
   <g clip-path="url(#planet)">
     <g transform="rotate(-14 ${px} ${py})"><rect x="${px - pr - 40}" y="${py - pr - 40}" width="${2 * pr + 80}" height="${2 * pr + 80}" filter="url(#bands)"/></g>
