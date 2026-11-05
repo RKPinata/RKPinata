@@ -32,12 +32,12 @@
 ### 📊 GitHub stats
 
 <p align="center">
-  <img height="165" src="https://github-readme-stats.vercel.app/api?username=RKPinata&show_icons=true&theme=vue-dark&hide_border=true&count_private=true" alt="GitHub stats" />
-  <img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=RKPinata&layout=compact&theme=vue-dark&hide_border=true&langs_count=8" alt="Top languages" />
+  <img width="100%" src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=RKPinata&theme=vue" alt="Profile details" />
 </p>
 
 <p align="center">
-  <img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=RKPinata&bg_color=1c1b23&color=42b883&line=42b883&point=ffffff&area=true&hide_border=true" alt="Contribution graph" />
+  <img height="170" src="https://streak-stats.demolab.com?user=RKPinata&theme=vue-dark&hide_border=true" alt="Contribution streak" />
+  <img height="170" src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=RKPinata&theme=vue" alt="Top languages" />
 </p>
 
 <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:35495e,100:42b883&height=110&section=footer" />
