@@ -142,18 +142,73 @@ async function beatsFrom(events) {
 const beats = await beatsFrom(await github(`users/${USER}/events/public?per_page=100`));
 const body = beats.length ? beats.map((b) => BEATS[b.kind](b)).join(' ') : pick(QUIET);
 const date = new Date(from).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
-const entry = `**Day ${dayNo} of the voyage** · <sub>${date}</sub>\n\n*${pick(OPENINGS)} ${body} ${pick(CLOSINGS)}*`;
+const text = `${pick(OPENINGS)} ${body} ${pick(CLOSINGS)}`;
+const entry = `**Day ${dayNo} of the voyage** · <sub>${date}</sub>\n\n*${text}*`;
+const plain = text.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replaceAll('`', '');
 
 if (dry) {
   console.log(entry);
   process.exit(0);
 }
 
+const xml = (s) => s.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
+
+function wrap(s, max) {
+  const lines = [''];
+  for (const w of s.split(' ')) {
+    const last = lines.length - 1;
+    if (lines[last] && lines[last].length + w.length + 1 > max) lines.push(w);
+    else lines[last] = lines[last] ? `${lines[last]} ${w}` : w;
+  }
+  return lines;
+}
+
+// A logbook page in the header's palette: ruled lines, a margin rule, and each line written in turn.
+function logCard() {
+  const lines = wrap(plain, 74);
+  const top = 150;
+  const step = 48;
+  const sigY = top + (lines.length - 1) * step + 72;
+  const h = sigY + 44;
+  const mono = `font-family="'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace"`;
+  const serif = `font-family="Georgia, 'Iowan Old Style', 'Times New Roman', serif" font-style="italic"`;
+  const written = lines.map((_, i) => 0.6 + i * 0.9);
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 ${h}" width="1200" height="${h}" role="img" aria-label="${xml(`Ship's log, day ${dayNo}: ${plain}`)}">
+  <defs>
+    <radialGradient id="bg" cx="30%" cy="0%" r="110%">
+      <stop offset="0" stop-color="#0b1a3a"/><stop offset="0.6" stop-color="#050b1f"/><stop offset="1" stop-color="#02040d"/>
+    </radialGradient>
+    <radialGradient id="neb"><stop offset="0" stop-color="#6366f1" stop-opacity="0.22"/><stop offset="1" stop-color="#6366f1" stop-opacity="0"/></radialGradient>
+${lines.map((_, i) => `    <clipPath id="w${i}"><rect x="100" y="${top + i * step - 38}" height="52" width="0"><animate attributeName="width" to="1080" begin="${written[i]}s" dur="0.9s" fill="freeze"/></rect></clipPath>`).join('\n')}
+  </defs>
+  <rect width="1200" height="${h}" rx="18" fill="url(#bg)"/>
+  <ellipse cx="1000" cy="${h}" rx="420" ry="200" fill="url(#neb)"/>
+  <rect x="0.5" y="0.5" width="1199" height="${h - 1}" rx="18" fill="none" stroke="#1e3a8a" stroke-opacity="0.6"/>
+  <g fill="#ffffff">
+    <circle cx="1120" cy="120" r="1" opacity="0.6"/><circle cx="1060" cy="${h - 40}" r="1.2" opacity="0.5"/>
+    <circle cx="640" cy="${h - 24}" r="0.8" opacity="0.6"/><circle cx="1170" cy="${Math.round(h / 2)}" r="1" opacity="0.5"/>
+    <circle cx="1150" cy="${h - 90}" r="1.5"><animate attributeName="opacity" values="1;0.2;1" dur="3s" repeatCount="indefinite"/></circle>
+  </g>
+  <circle cx="48" cy="52" r="5" fill="#38bdf8"><animate attributeName="opacity" values="1;0.2;1" dur="1.6s" repeatCount="indefinite"/></circle>
+  <text x="64" y="57" ${mono} font-size="15" letter-spacing="5" fill="#7dd3fc">SHIP'S LOG</text>
+  <text x="1152" y="57" ${mono} font-size="15" letter-spacing="3" fill="#94a3b8" text-anchor="end">${xml(`DAY ${dayNo} · ${date.toUpperCase()}`)}</text>
+  <line x1="40" y1="84" x2="1160" y2="84" stroke="#1e3a8a"/>
+  <line x1="80" y1="84" x2="80" y2="${h - 30}" stroke="#38bdf8" stroke-opacity="0.35"/>
+${lines.map((_, i) => `  <line x1="40" y1="${top + i * step + 14}" x2="1160" y2="${top + i * step + 14}" stroke="#16264a"/>`).join('\n')}
+${lines.map((l, i) => `  <text x="110" y="${top + i * step}" ${serif} font-size="27" fill="#e0f2fe" clip-path="url(#w${i})">${xml(l)}</text>`).join('\n')}
+  <text x="1152" y="${sigY}" ${serif} font-size="19" fill="#7dd3fc" text-anchor="end" opacity="0">— the ship’s computer<animate attributeName="opacity" to="0.85" begin="${written.at(-1) + 1}s" dur="0.8s" fill="freeze"/></text>
+</svg>
+`;
+}
+
+writeFileSync('assets/log.svg', logCard());
+
 const README = 'README.md';
 const markers = /(<!-- LOG:START -->)[\s\S]*?(<!-- LOG:END -->)/;
 const readme = readFileSync(README, 'utf8');
 if (!markers.test(readme)) throw new Error(`${README} has no LOG:START / LOG:END markers`);
-writeFileSync(README, readme.replace(markers, (_, start, end) => `${start}\n${entry}\n${end}`));
+const card = `<img width="100%" src="assets/log.svg?day=${dayNo}" alt="${xml(`Ship's log, day ${dayNo}: ${plain}`)}" />`;
+writeFileSync(README, readme.replace(markers, (_, start, end) => `${start}\n${card}\n${end}`));
 
 const BOOK = 'logbook.md';
 const book = existsSync(BOOK)

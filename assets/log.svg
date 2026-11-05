@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 362" width="1200" height="362" role="img" aria-label="Ship's log, day 1839: Nothing on the long-range scanners but the usual dust. Nothing on the public frequencies. Some voyages are made in the dark. Logging off. The stars can keep watch.">
+  <defs>
+    <radialGradient id="bg" cx="30%" cy="0%" r="110%">
+      <stop offset="0" stop-color="#0b1a3a"/><stop offset="0.6" stop-color="#050b1f"/><stop offset="1" stop-color="#02040d"/>
+    </radialGradient>
+    <radialGradient id="neb"><stop offset="0" stop-color="#6366f1" stop-opacity="0.22"/><stop offset="1" stop-color="#6366f1" stop-opacity="0"/></radialGradient>
+    <clipPath id="w0"><rect x="100" y="112" height="52" width="0"><animate attributeName="width" to="1080" begin="0.6s" dur="0.9s" fill="freeze"/></rect></clipPath>
+    <clipPath id="w1"><rect x="100" y="160" height="52" width="0"><animate attributeName="width" to="1080" begin="1.5s" dur="0.9s" fill="freeze"/></rect></clipPath>
+    <clipPath id="w2"><rect x="100" y="208" height="52" width="0"><animate attributeName="width" to="1080" begin="2.4s" dur="0.9s" fill="freeze"/></rect></clipPath>
+  </defs>
+  <rect width="1200" height="362" rx="18" fill="url(#bg)"/>
+  <ellipse cx="1000" cy="362" rx="420" ry="200" fill="url(#neb)"/>
+  <rect x="0.5" y="0.5" width="1199" height="361" rx="18" fill="none" stroke="#1e3a8a" stroke-opacity="0.6"/>
+  <g fill="#ffffff">
+    <circle cx="1120" cy="120" r="1" opacity="0.6"/><circle cx="1060" cy="322" r="1.2" opacity="0.5"/>
+    <circle cx="640" cy="338" r="0.8" opacity="0.6"/><circle cx="1170" cy="181" r="1" opacity="0.5"/>
+    <circle cx="1150" cy="272" r="1.5"><animate attributeName="opacity" values="1;0.2;1" dur="3s" repeatCount="indefinite"/></circle>
+  </g>
+  <circle cx="48" cy="52" r="5" fill="#38bdf8"><animate attributeName="opacity" values="1;0.2;1" dur="1.6s" repeatCount="indefinite"/></circle>
+  <text x="64" y="57" font-family="'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="15" letter-spacing="5" fill="#7dd3fc">SHIP'S LOG</text>
+  <text x="1152" y="57" font-family="'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="15" letter-spacing="3" fill="#94a3b8" text-anchor="end">DAY 1839 · 4 NOVEMBER 2026</text>
+  <line x1="40" y1="84" x2="1160" y2="84" stroke="#1e3a8a"/>
+  <line x1="80" y1="84" x2="80" y2="332" stroke="#38bdf8" stroke-opacity="0.35"/>
+  <line x1="40" y1="164" x2="1160" y2="164" stroke="#16264a"/>
+  <line x1="40" y1="212" x2="1160" y2="212" stroke="#16264a"/>
+  <line x1="40" y1="260" x2="1160" y2="260" stroke="#16264a"/>
+  <text x="110" y="150" font-family="Georgia, 'Iowan Old Style', 'Times New Roman', serif" font-style="italic" font-size="27" fill="#e0f2fe" clip-path="url(#w0)">Nothing on the long-range scanners but the usual dust. Nothing on the</text>
+  <text x="110" y="198" font-family="Georgia, 'Iowan Old Style', 'Times New Roman', serif" font-style="italic" font-size="27" fill="#e0f2fe" clip-path="url(#w1)">public frequencies. Some voyages are made in the dark. Logging off. The</text>
+  <text x="110" y="246" font-family="Georgia, 'Iowan Old Style', 'Times New Roman', serif" font-style="italic" font-size="27" fill="#e0f2fe" clip-path="url(#w2)">stars can keep watch.</text>
+  <text x="1152" y="318" font-family="Georgia, 'Iowan Old Style', 'Times New Roman', serif" font-style="italic" font-size="19" fill="#7dd3fc" text-anchor="end" opacity="0">— the ship’s computer<animate attributeName="opacity" to="0.85" begin="3.4s" dur="0.8s" fill="freeze"/></text>
+</svg>
