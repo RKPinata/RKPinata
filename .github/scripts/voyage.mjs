@@ -6,7 +6,7 @@
 import { createHash } from 'node:crypto';
 import { writeFileSync } from 'node:fs';
 import { icon } from './icons.mjs';
-import { LAYOUTS, MONO, SERIF, SKY_DEFS, sky, wrap, xml } from './layout.mjs';
+import { LAYOUTS, MONO, SKY_DEFS, sky, wrap, xml } from './layout.mjs';
 
 const CHAPTERS = [
   {
@@ -32,8 +32,8 @@ const CHAPTERS = [
 function voyage({ W }) {
   const narrow = W < 900;
   const P = narrow
-    ? { margin: 32, rail: 44, X: 76, body: 30, line: 44, chars: 34, logo: 32, label: 17, charW: 12.2 }
-    : { margin: 64, rail: 112, X: 156, body: 30, line: 45, chars: 64, logo: 36, label: 18, charW: 12.8 };
+    ? { margin: 32, rail: 44, X: 76, body: 23, line: 38, chars: 35, logo: 32, label: 17, charW: 12.2 }
+    : { margin: 64, rail: 112, X: 156, body: 26, line: 42, chars: 58, logo: 36, label: 18, charW: 12.8 };
   const { X } = P;
   const rowEnd = W - P.margin;
 
@@ -76,7 +76,7 @@ function voyage({ W }) {
       <circle cx="${P.rail}" cy="${b.y - 6}" r="16" fill="url(#dotGlow)"${now ? '><animate attributeName="r" values="14;24;14" dur="2.4s" repeatCount="indefinite"/></circle>' : '/>'}
       <circle cx="${P.rail}" cy="${b.y - 6}" r="6" fill="${now ? '#7dd3fc' : '#0b1a3a'}" stroke="#7dd3fc" stroke-width="1.8"/>
       <text x="${X}" y="${b.y}" ${MONO} font-size="20" letter-spacing="4" fill="#7dd3fc">${xml(b.year.toUpperCase())}<tspan fill="#3b5b85"> · </tspan><tspan fill="#cfe7ff">${xml(b.title.toUpperCase())}</tspan></text>
-      ${b.lines.map((l, j) => `<text x="${X}" y="${b.y + 50 + j * P.line}" ${SERIF} font-size="${P.body}" fill="#e0f2fe">${xml(l)}</text>`).join('\n      ')}
+      ${b.lines.map((l, j) => `<text x="${X}" y="${b.y + 50 + j * P.line}" ${MONO} font-size="${P.body}" fill="#d6ecff">${xml(l)}</text>`).join('\n      ')}
       ${b.cargo.svg}
     </g>`;
   };
