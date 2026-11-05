@@ -6,6 +6,7 @@
 //   node .github/scripts/ships-log.mjs --dry              print the entries only
 //   node .github/scripts/ships-log.mjs --date 2026-11-04  log that day instead
 //   node .github/scripts/ships-log.mjs --backfill 21      log each of the last 21 days
+import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { SCENE_H, SCENE_W, starLayer } from './scene.mjs';
 
@@ -290,12 +291,15 @@ writeFileSync(
 );
 
 mkdirSync('assets', { recursive: true });
-writeFileSync('assets/bridge.svg', bridge(entries.slice(0, SHOWN)));
+const svg = bridge(entries.slice(0, SHOWN));
+writeFileSync('assets/bridge.svg', svg);
+// GitHub's image proxy caches by URL, so the URL changes whenever the card does.
+const version = createHash('sha1').update(svg).digest('hex').slice(0, 10);
 
 const README = 'README.md';
 const markers = /(<!-- LOG:START -->)[\s\S]*?(<!-- LOG:END -->)/;
 const readme = readFileSync(README, 'utf8');
 if (!markers.test(readme)) throw new Error(`${README} has no LOG:START / LOG:END markers`);
 const latest = entries[0];
-const card = `<a href="logbook.md"><img width="100%" src="assets/bridge.svg?day=${latest.day}" alt="${xml(`Danish Roti: frontend engineer, tool builder, writer. Ship's log, day ${latest.day}: ${plain(latest.text)}`)}" /></a>`;
+const card = `<a href="logbook.md"><img width="100%" src="assets/bridge.svg?v=${version}" alt="${xml(`Danish Roti: frontend engineer, tool builder, writer. Ship's log, day ${latest.day}: ${plain(latest.text)}`)}" /></a>`;
 writeFileSync(README, readme.replace(markers, (_, open, close) => `${open}\n${card}\n${close}`));
