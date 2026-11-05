@@ -8,12 +8,14 @@
 //   node .github/scripts/ships-log.mjs --backfill 21      log each of the last 21 days
 import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { icon } from './icons.mjs';
 import { SCENE_H, SCENE_W, starLayer } from './scene.mjs';
 
 const USER = process.env.GH_USER || 'RKPinata';
 const LAUNCH = Date.UTC(2021, 9, 23); // the day the account was created: day 1 of the voyage
 const DAY = 86_400_000;
 const SHOWN = 3; // entries drawn on the header
+const STACK = ['typescript', 'react', 'vuedotjs', 'astro', 'nodedotjs', 'nestjs']; // logos under the name
 
 const args = process.argv.slice(2);
 const flag = (name) => {
@@ -254,7 +256,7 @@ ${blocks[0].lines.map((_, j) => `    <clipPath id="w${j}"><rect x="${X - 10}" y=
       <text x="90" y="152" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="68" font-weight="700" letter-spacing="-1" fill="#7cc4ff" opacity="0.35" filter="url(#textGlow)">Danish Roti</text>
       <text x="90" y="152" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="68" font-weight="700" letter-spacing="-1" fill="#f4f8ff">Danish Roti</text>
       <text x="93" y="192" ${mono} font-size="17" letter-spacing="1" fill="#b9d3ee">frontend engineer · tool builder · writer</text>
-      <text x="94" y="224" ${mono} font-size="11" letter-spacing="3.5" fill="#6b85a8">TYPESCRIPT · REACT · VUE · ASTRO · NODE · NEST</text>
+      ${STACK.map((slug, i) => icon(slug, 94 + i * 36, 210, 20, '#b9d3ee')).join('')}
     </g>
 
     <rect x="40" y="262" width="${W - 80}" height="${panelBottom - 262}" rx="14" fill="#020617" fill-opacity="0.62" stroke="#1e3a8a" stroke-opacity="0.7"/>

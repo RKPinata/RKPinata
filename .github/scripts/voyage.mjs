@@ -3,6 +3,7 @@
 //
 //   node .github/scripts/voyage.mjs
 import { readFileSync, writeFileSync } from 'node:fs';
+import { icon } from './icons.mjs';
 import { SCENE_H, SCENE_W, starLayer } from './scene.mjs';
 
 const CHAPTERS = [
@@ -10,31 +11,31 @@ const CHAPTERS = [
     year: '2022',
     title: 'First light',
     text: 'Pushed a small blog out of the harbour on Next.js and Tailwind, mostly to see if it would float. It did.',
-    cargo: ['Next.js', 'React', 'Tailwind'],
+    cargo: [['nextdotjs', 'Next.js'], ['react', 'React'], ['tailwindcss', 'Tailwind']],
   },
   {
     year: '2023',
     title: 'Open water',
     text: 'The busy year. An NFT mint wired to thirdweb, a trio of vet apps in React, portfolios built on Vite. Then I went below deck and learned the engines.',
-    cargo: ['TypeScript', 'React', 'Vite', 'styled-components', 'Express', 'NestJS'],
+    cargo: [['typescript', 'TypeScript'], ['react', 'React'], ['vite', 'Vite'], ['styledcomponents', 'styled-components'], ['express', 'Express'], ['nestjs', 'NestJS']],
   },
   {
     year: '2024',
     title: 'Trade routes',
     text: 'Dashboards and ledgers: transaction histories, an accounting front end, a friend’s final-year site. Then a second ship to learn by hand, with Pinia in the hold.',
-    cargo: ['Next.js', 'TypeScript', 'Vue', 'Pinia', 'Tailwind'],
+    cargo: [['nextdotjs', 'Next.js'], ['typescript', 'TypeScript'], ['vuedotjs', 'Vue'], ['pinia', 'Pinia'], ['tailwindcss', 'Tailwind']],
   },
   {
     year: '2025',
     title: 'Ink',
     text: 'Kept a different kind of log: fiction, written slowly. The public band went quiet. The engines did not.',
-    cargo: ['SCSS', 'marginalia'],
+    cargo: [['sass', 'SCSS'], [null, 'marginalia']],
   },
   {
     year: '2026',
     title: 'Instruments',
     text: 'Rebuilt the bridge in three.js, GSAP and Framer Motion. Then built tools for the crew: Claude Code plugins that remember, worktree scripts, a workshop that coaches writers.',
-    cargo: ['three.js', 'GSAP', 'Framer Motion', 'Astro', 'Claude Code', 'Shell'],
+    cargo: [['threedotjs', 'three.js'], ['gsap', 'GSAP'], ['framer', 'Framer Motion'], ['astro', 'Astro'], ['claude', 'Claude Code'], ['gnubash', 'Shell']],
   },
 ];
 
@@ -60,7 +61,7 @@ let y = 150;
 const blocks = CHAPTERS.map((c, i) => {
   const lines = wrap(c.text, 88);
   const block = { ...c, i, y, lines };
-  y += 32 + lines.length * LINE + 30 + 44;
+  y += 32 + lines.length * LINE + 34 + 46;
   return block;
 });
 const H = y - 10;
@@ -74,9 +75,23 @@ const chapter = ({ year, title, lines, cargo, i, y: cy }) => {
       <circle cx="${RAIL}" cy="${cy - 5}" r="5" fill="${now ? '#7dd3fc' : '#0b1a3a'}" stroke="#7dd3fc" stroke-width="1.5"/>
       <text x="${X}" y="${cy}" ${mono} font-size="13" letter-spacing="4" fill="#7dd3fc">${year}<tspan fill="#3b5b85"> · </tspan><tspan fill="#cfe7ff">${xml(title.toUpperCase())}</tspan>${now ? '<tspan fill="#38bdf8" dx="14">◂ NOW</tspan>' : ''}</text>
       ${lines.map((l, j) => `<text x="${X}" y="${cy + 34 + j * LINE}" ${serif} font-size="20" fill="#e0f2fe">${xml(l)}</text>`).join('\n      ')}
-      <text x="${X}" y="${cy + 34 + (lines.length - 1) * LINE + 32}" ${mono} font-size="11" letter-spacing="3" fill="#6b85a8">${xml(cargo.map((c) => c.toUpperCase()).join('  ·  '))}</text>
+      ${manifest(cargo, cy + 34 + (lines.length - 1) * LINE + 34)}
     </g>`;
 };
+
+// A row of logo + label pairs; labels are mono, so their width follows from the character count.
+function manifest(cargo, baseline) {
+  let x = X;
+  return cargo
+    .map(([slug, label]) => {
+      const text = label.toUpperCase();
+      const logo = slug ? icon(slug, x, baseline - 13, 16, '#9cc8ee') : '';
+      const tx = slug ? x + 23 : x;
+      x = tx + text.length * 8.6 + 26;
+      return `${logo}<text x="${tx}" y="${baseline}" ${mono} font-size="11" letter-spacing="2" fill="#7f98bb">${xml(text)}</text>`;
+    })
+    .join('');
+}
 
 const backdrop = readFileSync('assets/scene.jpg').toString('base64');
 // The bridge card's sky turned upside down, so its planet rises at the bottom, beside "now".
