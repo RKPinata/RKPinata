@@ -12,6 +12,16 @@
 
 ---
 
+### 📓 Ship's log
+
+<!-- LOG:START -->
+**Day 1839 of the voyage** · <sub>4 November 2026</sub>
+
+*Nothing on the long-range scanners but the usual dust. Nothing on the public frequencies. Some voyages are made in the dark. Logging off. The stars can keep watch.*
+<!-- LOG:END -->
+
+<sub>The ship's computer writes a new entry each morning from yesterday's public commits. <a href="logbook.md">Read the whole logbook →</a></sub>
+
 ### 🛠️ Stack
 
 <p align="center">
