@@ -9,7 +9,7 @@
 import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { icon } from './icons.mjs';
-import { SCENE_H, SCENE_W, starLayer } from './scene.mjs';
+import { LAYOUTS, MONO, SANS, SERIF, SKY_DEFS, sky } from './layout.mjs';
 
 const USER = process.env.GH_USER || 'RKPinata';
 const LAUNCH = Date.UTC(2021, 9, 23); // the day the account was created: day 1 of the voyage
@@ -200,73 +200,77 @@ function wrap(s, max) {
   return lines;
 }
 
-// The profile header: name over the space scene, and a logbook panel with the latest entries.
+// The profile header: name and stack over the night sky, and a logbook panel with the latest entries.
 // The newest entry writes itself in line by line; older ones sit dimmer below it.
-function bridge(shown) {
-  const W = 1200;
-  const X = 112;
-  const LINE = 31;
-  const mono = `font-family="'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace"`;
-  const serif = `font-family="Georgia, 'Iowan Old Style', 'Times New Roman', serif" font-style="italic"`;
+function bridge(shown, { W }) {
+  const narrow = W < 900;
+  const P = narrow
+    ? { pad: 36, name: 58, sub: 18, logo: 34, gap: 50, margin: 18, X: 64, body: 25, line: 37, chars: 41 }
+    : { pad: 90, name: 78, sub: 21, logo: 38, gap: 58, margin: 40, X: 116, body: 25, line: 38, chars: 80 };
+  const { pad, X } = P;
 
-  let y = 360;
+  const labelY = 70;
+  const nameY = labelY + Math.round(P.name * 0.95) + 6;
+  const subY = nameY + P.sub + 22;
+  const logosTop = subY + 26;
+  const panelTop = logosTop + P.logo + 36;
+  const right = W - P.margin - 32;
+
+  let y = panelTop + 100;
   const blocks = shown.map((e, i) => {
-    const block = { e, i, y, lines: wrap(plain(e.text), 92) };
-    y += 34 + (block.lines.length - 1) * LINE + 50;
+    const block = { e, i, y, lines: wrap(plain(e.text), P.chars) };
+    y += 38 + (block.lines.length - 1) * P.line + 58;
     return block;
   });
-  const sigY = y - 14;
-  const panelBottom = sigY + 24;
-  const H = panelBottom + 40;
-  const backdrop = readFileSync('assets/scene.jpg').toString('base64');
+  const sigY = y - 22;
+  const panelBottom = sigY + 30;
+  const H = panelBottom + P.margin;
   const start = (j) => 1.4 + j * 0.9;
-  const newest = blocks[0].lines.length;
+  const lineY = (b, j) => b.y + 38 + j * P.line;
 
-  const entry = ({ e, i, y: ly, lines }) => {
-    const fade = [1, 0.62, 0.42][i] ?? 0.35;
-    const text = lines
-      .map((l, j) => `<text x="${X}" y="${ly + 34 + j * LINE}" ${serif} font-size="21" fill="#e0f2fe"${i === 0 ? ` clip-path="url(#w${j})"` : ''}>${xml(l)}</text>`)
+  const entry = (b) => {
+    const fade = [1, 0.66, 0.46][b.i] ?? 0.4;
+    const text = b.lines
+      .map((l, j) => `<text x="${X}" y="${lineY(b, j)}" ${SERIF} font-size="${P.body}" fill="#e0f2fe"${b.i === 0 ? ` clip-path="url(#w${j})"` : ''}>${xml(l)}</text>`)
       .join('\n      ');
     return `<g opacity="${fade}">
-      <text x="${X}" y="${ly}" ${mono} font-size="12" letter-spacing="3" fill="#7dd3fc">${xml(`DAY ${e.day} · ${e.date.toUpperCase()}`)}</text>
+      <text x="${X}" y="${b.y}" ${MONO} font-size="14" letter-spacing="3" fill="#7dd3fc">${xml(`DAY ${b.e.day} · ${b.e.date.toUpperCase()}`)}</text>
       ${text}
     </g>`;
   };
 
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="${xml(`Danish Roti: frontend engineer, tool builder, writer. Ship's log, day ${shown[0].day}: ${plain(shown[0].text)}`)}">
   <defs>
-    <radialGradient id="starGlow"><stop offset="0" stop-color="#cfe0ff" stop-opacity="0.7"/><stop offset="1" stop-color="#cfe0ff" stop-opacity="0"/></radialGradient>
+    ${SKY_DEFS}
     <linearGradient id="vignette" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#02030a" stop-opacity="0.7"/><stop offset="0.55" stop-color="#02030a" stop-opacity="0"/>
+      <stop offset="0" stop-color="#02030a" stop-opacity="0.7"/><stop offset="${narrow ? 0.9 : 0.55}" stop-color="#02030a" stop-opacity="0"/>
     </linearGradient>
     <filter id="textGlow" x="-10%" y="-40%" width="120%" height="180%"><feGaussianBlur stdDeviation="10"/></filter>
     <clipPath id="frame"><rect width="${W}" height="${H}" rx="18"/></clipPath>
-${blocks[0].lines.map((_, j) => `    <clipPath id="w${j}"><rect x="${X - 10}" y="${blocks[0].y + 34 + j * LINE - 26}" height="36" width="0"><animate attributeName="width" to="${W - X}" begin="${start(j)}s" dur="0.9s" fill="freeze"/></rect></clipPath>`).join('\n')}
+${blocks[0].lines.map((_, j) => `    <clipPath id="w${j}"><rect x="${X - 10}" y="${lineY(blocks[0], j) - P.body}" height="${P.body + 12}" width="0"><animate attributeName="width" to="${W - X}" begin="${start(j)}s" dur="0.9s" fill="freeze"/></rect></clipPath>`).join('\n')}
   </defs>
   <g clip-path="url(#frame)">
-    <rect width="${W}" height="${H}" fill="#02030a"/>
-    <image href="data:image/jpeg;base64,${backdrop}" width="${SCENE_W}" height="${SCENE_H}"/>
-    ${starLayer(H)}
+    ${sky(W, H, { planetX: narrow ? W + 90 : undefined })}
     <rect width="${W}" height="${H}" fill="url(#vignette)"/>
 
     <g>
       <animate attributeName="opacity" values="0;1" dur="1.2s" fill="freeze"/>
-      <circle cx="96" cy="76" r="3.5" fill="#7dd3fc"><animate attributeName="opacity" values="1;0.25;1" dur="1.8s" repeatCount="indefinite"/></circle>
-      <text x="110" y="81" ${mono} font-size="13" letter-spacing="5" fill="#9cc8ee">INCOMING TRANSMISSION</text>
-      <text x="90" y="152" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="68" font-weight="700" letter-spacing="-1" fill="#7cc4ff" opacity="0.35" filter="url(#textGlow)">Danish Roti</text>
-      <text x="90" y="152" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="68" font-weight="700" letter-spacing="-1" fill="#f4f8ff">Danish Roti</text>
-      <text x="93" y="192" ${mono} font-size="17" letter-spacing="1" fill="#b9d3ee">frontend engineer · tool builder · writer</text>
-      ${STACK.map((slug, i) => icon(slug, 94 + i * 36, 210, 20, '#b9d3ee')).join('')}
+      <circle cx="${pad + 6}" cy="${labelY - 5}" r="4" fill="#7dd3fc"><animate attributeName="opacity" values="1;0.25;1" dur="1.8s" repeatCount="indefinite"/></circle>
+      <text x="${pad + 20}" y="${labelY}" ${MONO} font-size="15" letter-spacing="5" fill="#9cc8ee">INCOMING TRANSMISSION</text>
+      <text x="${pad}" y="${nameY}" ${SANS} font-size="${P.name}" font-weight="700" letter-spacing="-1" fill="#7cc4ff" opacity="0.35" filter="url(#textGlow)">Danish Roti</text>
+      <text x="${pad}" y="${nameY}" ${SANS} font-size="${P.name}" font-weight="700" letter-spacing="-1" fill="#f4f8ff">Danish Roti</text>
+      <text x="${pad + 3}" y="${subY}" ${MONO} font-size="${P.sub}" letter-spacing="1" fill="#b9d3ee">frontend engineer · tool builder · writer</text>
+      ${STACK.map((slug, i) => icon(slug, pad + 4 + i * P.gap, logosTop, P.logo, '#dbeafe')).join('')}
     </g>
 
-    <rect x="40" y="262" width="${W - 80}" height="${panelBottom - 262}" rx="14" fill="#020617" fill-opacity="0.62" stroke="#1e3a8a" stroke-opacity="0.7"/>
-    <circle cx="74" cy="296" r="4" fill="#38bdf8"><animate attributeName="opacity" values="1;0.2;1" dur="1.6s" repeatCount="indefinite"/></circle>
-    <text x="88" y="301" ${mono} font-size="13" letter-spacing="5" fill="#7dd3fc">SHIP'S LOG</text>
-    <text x="${W - 72}" y="301" ${mono} font-size="12" letter-spacing="2" fill="#64748b" text-anchor="end">LATEST ${shown.length} · FULL LOG IN LOGBOOK.MD</text>
-    <line x1="64" y1="318" x2="${W - 64}" y2="318" stroke="#1e3a8a" stroke-opacity="0.8"/>
-    <line x1="88" y1="318" x2="88" y2="${panelBottom - 14}" stroke="#38bdf8" stroke-opacity="0.3"/>
+    <rect x="${P.margin}" y="${panelTop}" width="${W - 2 * P.margin}" height="${panelBottom - panelTop}" rx="14" fill="#020617" fill-opacity="0.62" stroke="#1e3a8a" stroke-opacity="0.7"/>
+    <circle cx="${P.margin + 34}" cy="${panelTop + 37}" r="4.5" fill="#38bdf8"><animate attributeName="opacity" values="1;0.2;1" dur="1.6s" repeatCount="indefinite"/></circle>
+    <text x="${P.margin + 50}" y="${panelTop + 42}" ${MONO} font-size="15" letter-spacing="5" fill="#7dd3fc">SHIP'S LOG</text>
+    <text x="${right}" y="${panelTop + 42}" ${MONO} font-size="13" letter-spacing="2" fill="#64748b" text-anchor="end">${narrow ? `LATEST ${shown.length}` : `LATEST ${shown.length} · FULL LOG IN LOGBOOK.MD`}</text>
+    <line x1="${P.margin + 24}" y1="${panelTop + 62}" x2="${W - P.margin - 24}" y2="${panelTop + 62}" stroke="#1e3a8a" stroke-opacity="0.8"/>
+    <line x1="${X - 24}" y1="${panelTop + 62}" x2="${X - 24}" y2="${panelBottom - 16}" stroke="#38bdf8" stroke-opacity="0.3"/>
     ${blocks.map(entry).join('\n    ')}
-    <text x="${W - 72}" y="${sigY}" ${serif} font-size="16" fill="#7dd3fc" text-anchor="end" opacity="0">— the ship’s computer<animate attributeName="opacity" to="0.8" begin="${start(newest) + 0.6}s" dur="0.8s" fill="freeze"/></text>
+    <text x="${right}" y="${sigY}" ${SERIF} font-size="19" fill="#7dd3fc" text-anchor="end" opacity="0">— the ship’s computer<animate attributeName="opacity" to="0.8" begin="${start(blocks[0].lines.length) + 0.6}s" dur="0.8s" fill="freeze"/></text>
   </g>
 </svg>
 `;
@@ -293,15 +297,20 @@ writeFileSync(
 );
 
 mkdirSync('assets', { recursive: true });
-const svg = bridge(entries.slice(0, SHOWN));
-writeFileSync('assets/bridge.svg', svg);
+const hash = createHash('sha1');
+for (const layout of Object.values(LAYOUTS)) {
+  const svg = bridge(entries.slice(0, SHOWN), layout);
+  writeFileSync(`assets/bridge${layout.suffix}.svg`, svg);
+  hash.update(svg);
+}
 // GitHub's image proxy caches by URL, so the URL changes whenever the card does.
-const version = createHash('sha1').update(svg).digest('hex').slice(0, 10);
+const version = hash.digest('hex').slice(0, 10);
 
 const README = 'README.md';
 const markers = /(<!-- LOG:START -->)[\s\S]*?(<!-- LOG:END -->)/;
 const readme = readFileSync(README, 'utf8');
 if (!markers.test(readme)) throw new Error(`${README} has no LOG:START / LOG:END markers`);
 const latest = entries[0];
-const card = `<a href="logbook.md"><img width="100%" src="assets/bridge.svg?v=${version}" alt="${xml(`Danish Roti: frontend engineer, tool builder, writer. Ship's log, day ${latest.day}: ${plain(latest.text)}`)}" /></a>`;
+const alt = xml(`Danish Roti: frontend engineer, tool builder, writer. Ship's log, day ${latest.day}: ${plain(latest.text)}`);
+const card = `<a href="logbook.md"><picture><source media="(max-width: 760px)" srcset="assets/bridge-mobile.svg?v=${version}"><img width="100%" src="assets/bridge.svg?v=${version}" alt="${alt}" /></picture></a>`;
 writeFileSync(README, readme.replace(markers, (_, open, close) => `${open}\n${card}\n${close}`));
