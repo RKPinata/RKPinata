@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" width="1200" height="320" role="img" aria-label="Danish Roti: frontend engineer, tool builder, writer">
+  <defs>
+    <radialGradient id="sky" cx="45%" cy="35%" r="85%">
+      <stop offset="0" stop-color="#0b1a3a"/>
+      <stop offset="0.55" stop-color="#050b1f"/>
+      <stop offset="1" stop-color="#02040d"/>
+    </radialGradient>
+    <radialGradient id="nebA">
+      <stop offset="0" stop-color="#38bdf8" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#38bdf8" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="nebB">
+      <stop offset="0" stop-color="#6366f1" stop-opacity="0.4"/>
+      <stop offset="1" stop-color="#6366f1" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="nebC">
+      <stop offset="0" stop-color="#a855f7" stop-opacity="0.25"/>
+      <stop offset="1" stop-color="#a855f7" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="planet" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7dd3fc"/>
+      <stop offset="0.4" stop-color="#0ea5e9"/>
+      <stop offset="0.8" stop-color="#1e3a8a"/>
+      <stop offset="1" stop-color="#0b1a3a"/>
+    </linearGradient>
+    <radialGradient id="shine" cx="32%" cy="30%" r="60%">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="dwarf" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a5b4fc"/>
+      <stop offset="1" stop-color="#312e81"/>
+    </linearGradient>
+    <linearGradient id="trail" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#e0f2fe" stop-opacity="1"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-50%" width="140%" height="200%">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+    <filter id="halo" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="14"/>
+    </filter>
+    <path id="spark" d="M0,-7 L1.3,-1.3 L7,0 L1.3,1.3 L0,7 L-1.3,1.3 L-7,0 L-1.3,-1.3Z"/>
+    <clipPath id="frame"><rect width="1200" height="320" rx="18"/></clipPath>
+  </defs>
+
+  <g clip-path="url(#frame)">
+    <rect width="1200" height="320" fill="url(#sky)"/>
+    <ellipse cx="300" cy="250" rx="380" ry="160" fill="url(#nebA)"/>
+    <ellipse cx="860" cy="80" rx="360" ry="150" fill="url(#nebB)"/>
+    <ellipse cx="620" cy="310" rx="300" ry="110" fill="url(#nebC)"/>
+
+    <g fill="#ffffff">
+      <circle cx="40" cy="30" r="0.8" opacity="0.7"/>
+      <circle cx="95" cy="70" r="1.1" opacity="0.5"/>
+      <circle cx="150" cy="22" r="0.6" opacity="0.8"/>
+      <circle cx="210" cy="58" r="1.4" opacity="0.6"/>
+      <circle cx="265" cy="140" r="0.9" opacity="0.4"/>
+      <circle cx="320" cy="35" r="0.8" opacity="0.9"/>
+      <circle cx="380" cy="90" r="1.1" opacity="0.5"/>
+      <circle cx="430" cy="20" r="0.6" opacity="0.7"/>
+      <circle cx="470" cy="60" r="1.4" opacity="0.5"/>
+      <circle cx="520" cy="110" r="0.9" opacity="0.6"/>
+      <circle cx="575" cy="42" r="0.8" opacity="0.8"/>
+      <circle cx="640" cy="18" r="1.1" opacity="0.6"/>
+      <circle cx="690" cy="75" r="0.6" opacity="0.9"/>
+      <circle cx="735" cy="40" r="1.4" opacity="0.5"/>
+      <circle cx="780" cy="120" r="0.9" opacity="0.7"/>
+      <circle cx="825" cy="25" r="0.8" opacity="0.6"/>
+      <circle cx="870" cy="60" r="1.1" opacity="0.8"/>
+      <circle cx="915" cy="15" r="0.6" opacity="0.7"/>
+      <circle cx="960" cy="48" r="1.4" opacity="0.4"/>
+      <circle cx="1100" cy="30" r="0.9" opacity="0.8"/>
+      <circle cx="1150" cy="70" r="0.8" opacity="0.6"/>
+      <circle cx="1180" cy="140" r="1.1" opacity="0.7"/>
+      <circle cx="1130" cy="260" r="0.6" opacity="0.9"/>
+      <circle cx="1170" cy="300" r="1.4" opacity="0.5"/>
+      <circle cx="1060" cy="290" r="0.9" opacity="0.6"/>
+      <circle cx="980" cy="270" r="0.8" opacity="0.7"/>
+      <circle cx="900" cy="300" r="1.1" opacity="0.5"/>
+      <circle cx="850" cy="250" r="0.6" opacity="0.8"/>
+      <circle cx="760" cy="290" r="1.4" opacity="0.6"/>
+      <circle cx="700" cy="240" r="0.9" opacity="0.7"/>
+      <circle cx="640" cy="300" r="0.8" opacity="0.5"/>
+      <circle cx="600" cy="260" r="1.1" opacity="0.8"/>
+      <circle cx="540" cy="290" r="0.6" opacity="0.6"/>
+      <circle cx="470" cy="270" r="1.4" opacity="0.4"/>
+      <circle cx="420" cy="305" r="0.9" opacity="0.7"/>
+      <circle cx="360" cy="280" r="0.8" opacity="0.6"/>
+      <circle cx="300" cy="250" r="1.1" opacity="0.5"/>
+      <circle cx="240" cy="300" r="0.6" opacity="0.8"/>
+      <circle cx="180" cy="270" r="1.4" opacity="0.6"/>
+      <circle cx="120" cy="295" r="0.9" opacity="0.7"/>
+      <circle cx="60" cy="250" r="0.8" opacity="0.5"/>
+      <circle cx="25" cy="180" r="1.1" opacity="0.8"/>
+      <circle cx="70" cy="140" r="0.6" opacity="0.6"/>
+      <circle cx="30" cy="100" r="1.4" opacity="0.5"/>
+      <circle cx="1190" cy="210" r="0.9" opacity="0.7"/>
+      <circle cx="745" cy="200" r="0.8" opacity="0.6"/>
+      <circle cx="800" cy="175" r="1.1" opacity="0.8"/>
+      <circle cx="680" cy="150" r="0.6" opacity="0.7"/>
+    </g>
+
+    <g fill="#e0f2fe">
+      <circle cx="130" cy="120" r="1.6"><animate attributeName="opacity" values="1;0.15;1" dur="3s" repeatCount="indefinite"/></circle>
+      <circle cx="480" cy="40" r="1.4"><animate attributeName="opacity" values="1;0.2;1" dur="4s" begin="1s" repeatCount="indefinite"/></circle>
+      <circle cx="1180" cy="40" r="1.5"><animate attributeName="opacity" values="1;0.2;1" dur="3.5s" repeatCount="indefinite"/></circle>
+      <circle cx="330" cy="300" r="1.4"><animate attributeName="opacity" values="1;0.15;1" dur="3s" begin="2s" repeatCount="indefinite"/></circle>
+      <use href="#spark" transform="translate(760 60) scale(0.9)"><animate attributeName="opacity" values="1;0.2;1" dur="2.5s" repeatCount="indefinite"/></use>
+      <use href="#spark" transform="translate(650 210) scale(0.7)"><animate attributeName="opacity" values="0.2;1;0.2" dur="4.5s" repeatCount="indefinite"/></use>
+      <use href="#spark" transform="translate(1080 245) scale(0.8)"><animate attributeName="opacity" values="1;0.25;1" dur="2.8s" begin="0.6s" repeatCount="indefinite"/></use>
+      <use href="#spark" transform="translate(40 60) scale(0.6)"><animate attributeName="opacity" values="0.3;1;0.3" dur="3.2s" repeatCount="indefinite"/></use>
+    </g>
+
+    <!-- shooting star: crosses once every 7s -->
+    <g opacity="0">
+      <line x1="-160" y1="-46" x2="0" y2="0" stroke="url(#trail)" stroke-width="2" stroke-linecap="round"/>
+      <circle r="2.4" fill="#ffffff"/>
+      <animateTransform attributeName="transform" type="translate" values="560 10;900 108;900 108" keyTimes="0;0.2;1" dur="7s" begin="1.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;1;0;0" keyTimes="0;0.04;0.2;1" dur="7s" begin="1.5s" repeatCount="indefinite"/>
+    </g>
+
+    <circle cx="720" cy="262" r="10" fill="url(#dwarf)" opacity="0.85"/>
+
+    <circle cx="1010" cy="160" r="80" fill="#0ea5e9" opacity="0.35" filter="url(#halo)"/>
+    <g transform="translate(1010 160) rotate(-18)">
+      <ellipse rx="122" ry="22" fill="none" stroke="#7dd3fc" stroke-width="3" opacity="0.35"/>
+      <circle r="70" fill="url(#planet)"/>
+      <circle r="70" fill="url(#shine)"/>
+      <path d="M -122 0 A 122 22 0 0 0 122 0" fill="none" stroke="#7dd3fc" stroke-width="3" opacity="0.85"/>
+    </g>
+    <g>
+      <circle cx="1150" cy="160" r="7" fill="#e0f2fe"/>
+      <animateTransform attributeName="transform" type="rotate" from="0 1010 160" to="360 1010 160" dur="18s" repeatCount="indefinite"/>
+    </g>
+
+    <g>
+      <animate attributeName="opacity" values="0;1" dur="1.2s" fill="freeze"/>
+      <circle cx="96" cy="104" r="4" fill="#38bdf8"><animate attributeName="opacity" values="1;0.2;1" dur="1.6s" repeatCount="indefinite"/></circle>
+      <text x="110" y="109" font-family="'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" letter-spacing="4" fill="#7dd3fc">INCOMING TRANSMISSION</text>
+      <text x="90" y="185" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="76" font-weight="800" fill="#38bdf8" opacity="0.6" filter="url(#glow)">Danish Roti</text>
+      <text x="90" y="185" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="76" font-weight="800" fill="#ffffff">Danish Roti</text>
+      <text x="93" y="232" font-family="'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="19" fill="#bae6fd">frontend engineer · tool builder · writer</text>
+    </g>
+  </g>
+</svg>
