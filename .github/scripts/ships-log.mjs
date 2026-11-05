@@ -15,6 +15,8 @@ const USER = process.env.GH_USER || 'RKPinata';
 const LAUNCH = Date.UTC(2021, 9, 23); // the day the account was created: day 1 of the voyage
 const DAY = 86_400_000;
 const SHOWN = 3; // entries drawn on the header
+// A terminal block cursor that blinks after the newest entry.
+const CURSOR = '<tspan fill="#7dd3fc"> ▋<animate attributeName="fill-opacity" values="1;1;0;0" keyTimes="0;0.5;0.5;1" dur="1.1s" repeatCount="indefinite"/></tspan>';
 const STACK = ['typescript', 'react', 'vuedotjs', 'astro', 'nodedotjs', 'nestjs']; // logos under the name
 
 const args = process.argv.slice(2);
@@ -205,41 +207,46 @@ function wrap(s, max) {
 function bridge(shown, { W }) {
   const narrow = W < 900;
   const P = narrow
-    ? { pad: 36, name: 58, sub: 18, logo: 34, gap: 50, margin: 18, X: 64, body: 25, line: 37, chars: 41 }
-    : { pad: 90, name: 78, sub: 21, logo: 38, gap: 58, margin: 40, X: 116, body: 25, line: 38, chars: 80 };
+    ? { pad: 36, name: 68, sub: 26, logo: 46, gap: 64, margin: 18, X: 64, body: 24, line: 40, chars: 33 }
+    : { pad: 90, name: 96, sub: 30, logo: 54, gap: 78, margin: 40, X: 120, body: 27, line: 44, chars: 58 };
+  // Narrow cards stack the roles on two lines so they stay large.
+  const roles = narrow ? ['Frontend Engineer · Tool Builder', 'Fiction Writer'] : ['Frontend Engineer · Tool Builder · Fiction Writer'];
   const { pad, X } = P;
 
   const labelY = 70;
   const nameY = labelY + Math.round(P.name * 0.95) + 6;
-  const subY = nameY + P.sub + 22;
-  const logosTop = subY + 26;
-  const panelTop = logosTop + P.logo + 36;
+  const subY = nameY + P.sub + 26;
+  const logosTop = subY + (roles.length - 1) * (P.sub + 10) + 34;
+  const panelTop = logosTop + P.logo + 44;
   const right = W - P.margin - 32;
 
-  let y = panelTop + 100;
+  let y = panelTop + 116;
   const blocks = shown.map((e, i) => {
     const block = { e, i, y, lines: wrap(plain(e.text), P.chars) };
-    y += 38 + (block.lines.length - 1) * P.line + 58;
+    y += 46 + (block.lines.length - 1) * P.line + 66;
     return block;
   });
-  const sigY = y - 22;
-  const panelBottom = sigY + 30;
+  const sigY = y - 24;
+  const panelBottom = sigY + 36;
   const H = panelBottom + P.margin;
   const start = (j) => 1.4 + j * 0.9;
-  const lineY = (b, j) => b.y + 38 + j * P.line;
+  const lineY = (b, j) => b.y + 46 + j * P.line;
 
   const entry = (b) => {
     const fade = [1, 0.66, 0.46][b.i] ?? 0.4;
     const text = b.lines
-      .map((l, j) => `<text x="${X}" y="${lineY(b, j)}" ${SERIF} font-size="${P.body}" fill="#e0f2fe"${b.i === 0 ? ` clip-path="url(#w${j})"` : ''}>${xml(l)}</text>`)
+      .map((l, j) => {
+        const cursor = b.i === 0 && j === b.lines.length - 1 ? CURSOR : '';
+        return `<text x="${X}" y="${lineY(b, j)}" ${MONO} font-size="${P.body}" fill="#d6ecff"${b.i === 0 ? ` clip-path="url(#w${j})"` : ''}>${xml(l)}${cursor}</text>`;
+      })
       .join('\n      ');
     return `<g opacity="${fade}">
-      <text x="${X}" y="${b.y}" ${MONO} font-size="14" letter-spacing="3" fill="#7dd3fc">${xml(`DAY ${b.e.day} · ${b.e.date.toUpperCase()}`)}</text>
+      <text x="${X}" y="${b.y}" ${MONO} font-size="18" letter-spacing="3" fill="#7dd3fc">${xml(`DAY ${b.e.day} · ${b.e.date.toUpperCase()}`)}</text>
       ${text}
     </g>`;
   };
 
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="${xml(`Danish Roti: frontend engineer, tool builder, writer. Ship's log, day ${shown[0].day}: ${plain(shown[0].text)}`)}">
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="${xml(`Danish Roti: Frontend Engineer, Tool Builder, Fiction Writer. Ship's log, day ${shown[0].day}: ${plain(shown[0].text)}`)}">
   <defs>
     ${SKY_DEFS}
     <linearGradient id="vignette" x1="0" y1="0" x2="1" y2="0">
@@ -250,27 +257,27 @@ function bridge(shown, { W }) {
 ${blocks[0].lines.map((_, j) => `    <clipPath id="w${j}"><rect x="${X - 10}" y="${lineY(blocks[0], j) - P.body}" height="${P.body + 12}" width="0"><animate attributeName="width" to="${W - X}" begin="${start(j)}s" dur="0.9s" fill="freeze"/></rect></clipPath>`).join('\n')}
   </defs>
   <g clip-path="url(#frame)">
-    ${sky(W, H, { planetX: narrow ? W + 90 : undefined })}
+    ${sky(W, H, narrow ? { planetLeft: W - 150 } : {})}
     <rect width="${W}" height="${H}" fill="url(#vignette)"/>
 
     <g>
       <animate attributeName="opacity" values="0;1" dur="1.2s" fill="freeze"/>
       <circle cx="${pad + 6}" cy="${labelY - 5}" r="4" fill="#7dd3fc"><animate attributeName="opacity" values="1;0.25;1" dur="1.8s" repeatCount="indefinite"/></circle>
-      <text x="${pad + 20}" y="${labelY}" ${MONO} font-size="15" letter-spacing="5" fill="#9cc8ee">INCOMING TRANSMISSION</text>
+      <text x="${pad + 20}" y="${labelY}" ${MONO} font-size="17" letter-spacing="5" fill="#9cc8ee">INCOMING TRANSMISSION</text>
       <text x="${pad}" y="${nameY}" ${SANS} font-size="${P.name}" font-weight="700" letter-spacing="-1" fill="#7cc4ff" opacity="0.35" filter="url(#textGlow)">Danish Roti</text>
       <text x="${pad}" y="${nameY}" ${SANS} font-size="${P.name}" font-weight="700" letter-spacing="-1" fill="#f4f8ff">Danish Roti</text>
-      <text x="${pad + 3}" y="${subY}" ${MONO} font-size="${P.sub}" letter-spacing="1" fill="#b9d3ee">frontend engineer · tool builder · writer</text>
+      ${roles.map((r, i) => `<text x="${pad + 2}" y="${subY + i * (P.sub + 10)}" ${SANS} font-size="${P.sub}" font-weight="500" fill="#cfe2f7">${xml(r)}</text>`).join('')}
       ${STACK.map((slug, i) => icon(slug, pad + 4 + i * P.gap, logosTop, P.logo, '#dbeafe')).join('')}
     </g>
 
     <rect x="${P.margin}" y="${panelTop}" width="${W - 2 * P.margin}" height="${panelBottom - panelTop}" rx="14" fill="#020617" fill-opacity="0.62" stroke="#1e3a8a" stroke-opacity="0.7"/>
-    <circle cx="${P.margin + 34}" cy="${panelTop + 37}" r="4.5" fill="#38bdf8"><animate attributeName="opacity" values="1;0.2;1" dur="1.6s" repeatCount="indefinite"/></circle>
-    <text x="${P.margin + 50}" y="${panelTop + 42}" ${MONO} font-size="15" letter-spacing="5" fill="#7dd3fc">SHIP'S LOG</text>
-    <text x="${right}" y="${panelTop + 42}" ${MONO} font-size="13" letter-spacing="2" fill="#64748b" text-anchor="end">${narrow ? `LATEST ${shown.length}` : `LATEST ${shown.length} · FULL LOG IN LOGBOOK.MD`}</text>
-    <line x1="${P.margin + 24}" y1="${panelTop + 62}" x2="${W - P.margin - 24}" y2="${panelTop + 62}" stroke="#1e3a8a" stroke-opacity="0.8"/>
-    <line x1="${X - 24}" y1="${panelTop + 62}" x2="${X - 24}" y2="${panelBottom - 16}" stroke="#38bdf8" stroke-opacity="0.3"/>
+    <circle cx="${P.margin + 34}" cy="${panelTop + 41}" r="5" fill="#38bdf8"><animate attributeName="opacity" values="1;0.2;1" dur="1.6s" repeatCount="indefinite"/></circle>
+    <text x="${P.margin + 52}" y="${panelTop + 47}" ${MONO} font-size="18" letter-spacing="5" fill="#7dd3fc">SHIP'S LOG</text>
+    <text x="${right}" y="${panelTop + 47}" ${MONO} font-size="15" letter-spacing="2" fill="#64748b" text-anchor="end">${narrow ? `LATEST ${shown.length}` : `LATEST ${shown.length} · FULL LOG IN LOGBOOK.MD`}</text>
+    <line x1="${P.margin + 24}" y1="${panelTop + 70}" x2="${W - P.margin - 24}" y2="${panelTop + 70}" stroke="#1e3a8a" stroke-opacity="0.8"/>
+    <line x1="${X - 24}" y1="${panelTop + 70}" x2="${X - 24}" y2="${panelBottom - 16}" stroke="#38bdf8" stroke-opacity="0.3"/>
     ${blocks.map(entry).join('\n    ')}
-    <text x="${right}" y="${sigY}" ${SERIF} font-size="19" fill="#7dd3fc" text-anchor="end" opacity="0">— the ship’s computer<animate attributeName="opacity" to="0.8" begin="${start(blocks[0].lines.length) + 0.6}s" dur="0.8s" fill="freeze"/></text>
+    <text x="${right}" y="${sigY}" ${SERIF} font-size="22" fill="#7dd3fc" text-anchor="end" opacity="0">— the ship’s computer<animate attributeName="opacity" to="0.8" begin="${start(blocks[0].lines.length) + 0.6}s" dur="0.8s" fill="freeze"/></text>
   </g>
 </svg>
 `;
@@ -311,6 +318,6 @@ const markers = /(<!-- LOG:START -->)[\s\S]*?(<!-- LOG:END -->)/;
 const readme = readFileSync(README, 'utf8');
 if (!markers.test(readme)) throw new Error(`${README} has no LOG:START / LOG:END markers`);
 const latest = entries[0];
-const alt = xml(`Danish Roti: frontend engineer, tool builder, writer. Ship's log, day ${latest.day}: ${plain(latest.text)}`);
+const alt = xml(`Danish Roti: Frontend Engineer, Tool Builder, Fiction Writer. Ship's log, day ${latest.day}: ${plain(latest.text)}`);
 const card = `<a href="logbook.md"><picture><source media="(max-width: 760px)" srcset="assets/bridge-mobile.svg?v=${version}"><img width="100%" src="assets/bridge.svg?v=${version}" alt="${alt}" /></picture></a>`;
 writeFileSync(README, readme.replace(markers, (_, open, close) => `${open}\n${card}\n${close}`));

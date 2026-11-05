@@ -26,11 +26,11 @@ export function wrap(s, max) {
 
 const backdrop = () => readFileSync(new URL('../../assets/scene.jpg', import.meta.url)).toString('base64');
 
-// The night sky behind a card, W×H. `planetX` places the planet's centre, so a narrow card still shows
-// its edge; `flip` turns the sky upside down so the planet sits at the bottom.
-export function sky(W, H, { planetX, flip = false } = {}) {
+// The night sky behind a card, W×H, scaled up to cover tall cards. `planetLeft` is where the planet's
+// left edge lands, so narrow cards show a crescent; `flip` turns the sky upside down.
+export function sky(W, H, { planetLeft = PLANET.x - PLANET.r, flip = false } = {}) {
   const k = Math.max(1, H / SCENE_H);
-  const shiftX = planetX === undefined ? 0 : Math.round(planetX - PLANET.x * k);
+  const shiftX = Math.round(planetLeft + PLANET.r * k - PLANET.x * k);
   const place = flip ? `translate(${shiftX} ${H}) scale(${k} ${-k})` : `translate(${shiftX} 0) scale(${k})`;
   return `<rect width="${W}" height="${H}" fill="#02030a"/>
     <g transform="${place}">
