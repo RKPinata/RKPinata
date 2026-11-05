@@ -8,23 +8,37 @@ import { writeFileSync } from 'node:fs';
 import { icon } from './icons.mjs';
 import { LAYOUTS, MONO, SKY_DEFS, sky, wrap, xml } from './layout.mjs';
 
+// Each point leads with the quality, then the evidence after the colon, the way the resume does.
 const CHAPTERS = [
   {
     year: 'Now',
     title: 'The long watch',
-    text: 'Charted Inbox, the app’s largest module, and raised its test coverage from about 60% to 80% with QA. Led the team off Vuex. Split the shared composer into composables. Built tools for the crew: a VS Code extension for translation keys, and Claude Code skills that write tests.',
+    points: [
+      'Drove quality across teams: led Inbox, the app’s largest module, from about 60% to 80% E2E coverage with QA.',
+      'Led the team off Vuex: a pattern table picks Pinia, TanStack Query or a plain module by who reads the state.',
+      'Made the riskiest code safe to change: tests first, then split the shared composer into composables.',
+      'Turned review feedback into tooling: Claude Code rules and skills, and an i18n VS Code extension.',
+    ],
     cargo: [[null, 'Playwright'], ['pinia', 'Pinia'], ['tanstack', 'TanStack Query'], [null, 'VS Code'], ['claude', 'Claude Code']],
   },
   {
     year: '2025',
     title: 'New helm',
-    text: 'Signed on with respond.io as a frontend developer. Took on the AI Agents frontend in Vue 3, with a sandbox on the real Inbox composer so customer tests match production. Shipped three calendar integrations fast, then folded them into one OAuth flow.',
+    points: [
+      'Owned AI Agents for the long run: 18 months of its frontend, with a sandbox on the real Inbox so tests match production.',
+      'Balanced speed with code health: shipped three calendar integrations fast, then merged them onto one OAuth flow.',
+      'Challenged specs, not just built them: proved a filter in the PRD could never match, and Product cut it.',
+    ],
     cargo: [['vuedotjs', 'Vue 3'], ['typescript', 'TypeScript'], [null, 'Nango'], [null, 'Quill']],
   },
   {
     year: '2023',
     title: 'Open water',
-    text: 'Joined Snappymob and led core features on a MoneyLion web app that serves cash advances to millions of Americans. Profiled before guessing, cut redundant requests, brought in useSWR and Zustand. Below deck: NestJS APIs on PostgreSQL, and feature flags for safer launches.',
+    points: [
+      'Led delivery at scale: core features of a MoneyLion web app serving cash advances to millions of Americans.',
+      'Found performance problems by profiling, not guessing: cut redundant requests, then brought in useSWR and Zustand.',
+      'Made releases safer across the stack: NestJS APIs on PostgreSQL, and feature flags for gradual rollouts.',
+    ],
     cargo: [['react', 'React'], ['nextdotjs', 'Next.js'], ['typescript', 'TypeScript'], ['swr', 'useSWR'], [null, 'Zustand'], ['nestjs', 'NestJS'], ['postgresql', 'PostgreSQL']],
   },
 ];
@@ -57,15 +71,36 @@ function voyage({ W }) {
     return { svg: parts.join(''), bottom: row + P.logo };
   };
 
+  // Each point wraps with a hanging indent under its "›" marker; points sit a little apart.
+  const charW = P.body * 0.6;
   let y = 180;
   const blocks = CHAPTERS.map((c, i) => {
-    const lines = wrap(c.text, P.chars);
-    const textEnd = y + 50 + (lines.length - 1) * P.line;
+    const lines = [];
+    let ly = y + 50;
+    for (const point of c.points) {
+      wrap(point, P.chars - 2).forEach((text, j) => {
+        lines.push({ text, y: ly, first: j === 0 });
+        ly += P.line;
+      });
+      ly += Math.round(P.line * 0.3);
+    }
+    const textEnd = ly - P.line - Math.round(P.line * 0.3);
     const cargo = manifest(c.cargo, textEnd + 26);
     const block = { ...c, i, y, lines, cargo };
     y = cargo.bottom + 84;
     return block;
   });
+
+  // The quality before the colon is bright; the evidence after it is softer.
+  const pointLine = ({ text, y: ly, first }) => {
+    const x = X + 2 * charW;
+    const colon = first ? text.indexOf(': ') : -1;
+    const body = colon > 0
+      ? `<tspan fill="#ffffff">${xml(text.slice(0, colon + 1))}</tspan>${xml(text.slice(colon + 1))}`
+      : xml(text);
+    const marker = first ? `<text x="${X}" y="${ly}" ${MONO} font-size="${P.body}" fill="#38bdf8">›</text>` : '';
+    return `${marker}<text x="${x}" y="${ly}" ${MONO} font-size="${P.body}" fill="#b9d3ee">${body}</text>`;
+  };
   const H = y - 20;
   const last = blocks.at(-1);
 
@@ -76,12 +111,12 @@ function voyage({ W }) {
       <circle cx="${P.rail}" cy="${b.y - 6}" r="16" fill="url(#dotGlow)"${now ? '><animate attributeName="r" values="14;24;14" dur="2.4s" repeatCount="indefinite"/></circle>' : '/>'}
       <circle cx="${P.rail}" cy="${b.y - 6}" r="6" fill="${now ? '#7dd3fc' : '#0b1a3a'}" stroke="#7dd3fc" stroke-width="1.8"/>
       <text x="${X}" y="${b.y}" ${MONO} font-size="20" letter-spacing="4" fill="#7dd3fc">${xml(b.year.toUpperCase())}<tspan fill="#3b5b85"> · </tspan><tspan fill="#cfe7ff">${xml(b.title.toUpperCase())}</tspan></text>
-      ${b.lines.map((l, j) => `<text x="${X}" y="${b.y + 50 + j * P.line}" ${MONO} font-size="${P.body}" fill="#d6ecff">${xml(l)}</text>`).join('\n      ')}
+      ${b.lines.map(pointLine).join('\n      ')}
       ${b.cargo.svg}
     </g>`;
   };
 
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="${xml(`The voyage so far: ${CHAPTERS.map((c) => `${c.year}, ${c.title}: ${c.text}`).join(' ')}`)}">
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="${xml(`The voyage so far: ${CHAPTERS.map((c) => `${c.year}, ${c.title}: ${c.points.join(' ')}`).join(' ')}`)}">
   <defs>
     ${SKY_DEFS}
     <radialGradient id="dotGlow"><stop offset="0" stop-color="#38bdf8" stop-opacity="0.55"/><stop offset="1" stop-color="#38bdf8" stop-opacity="0"/></radialGradient>
