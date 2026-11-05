@@ -1,11 +1,9 @@
-<img width="100%" src="assets/space-header.svg" alt="Danish Roti: frontend engineer, tool builder, writer" />
-
 <!-- LOG:START -->
-<img width="100%" src="assets/log.svg?day=1839" alt="Ship's log, day 1839: Nothing on the long-range scanners but the usual dust. Nothing on the public frequencies. Some voyages are made in the dark. Logging off. The stars can keep watch." />
+<img width="100%" src="assets/bridge.svg?day=1839" alt="Danish Roti: frontend engineer, tool builder, writer. Ship's log, day 1839: The radio gave us twenty minutes of static that sounded almost like rain. Drifted. Read a little. Wrote a sentence and crossed it out, which also counts. Out." />
 <!-- LOG:END -->
 
 <p align="center">
-  <sub>The ship's computer writes a new entry each morning from yesterday's public commits · <a href="logbook.md">read the whole logbook →</a></sub>
+  <sub>The ship's computer writes a new entry each morning from yesterday's public activity · <a href="logbook.md">read the whole logbook →</a></sub>
 </p>
 
 <p align="center">
