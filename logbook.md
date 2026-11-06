@@ -2,6 +2,12 @@
 
 Every entry the ship's computer has written, newest first. [Back to the bridge](README.md)
 
+**Day 1840 of the voyage** · <sub>5 November 2026</sub>
+
+*The hull ticked as it cooled. Spotted [Sadsnake1/word-smith](https://github.com/Sadsnake1/word-smith) through the glass and marked it on the chart. Course holds.*
+
+---
+
 **Day 1839 of the voyage** · <sub>4 November 2026</sub>
 
 *The radio gave us twenty minutes of static that sounded almost like rain. Drifted. Read a little. Wrote a sentence and crossed it out, which also counts. Out.*
