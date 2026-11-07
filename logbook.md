@@ -2,6 +2,12 @@
 
 Every entry the ship's computer has written, newest first. [Back to the bridge](README.md)
 
+**Day 1841 of the voyage** · <sub>6 November 2026</sub>
+
+*Somewhere aft, a panel rattled. I have stopped asking which one. The open channels stayed quiet. Below deck, the engines ran anyway. Logging off. The stars can keep watch.*
+
+---
+
 **Day 1840 of the voyage** · <sub>5 November 2026</sub>
 
 *The hull ticked as it cooled. Spotted [Sadsnake1/word-smith](https://github.com/Sadsnake1/word-smith) through the glass and marked it on the chart. Course holds.*
