@@ -2,6 +2,12 @@
 
 Every entry the ship's computer has written, newest first. [Back to the bridge](README.md)
 
+**Day 1842 of the voyage** · <sub>7 November 2026</sub>
+
+*A meteor shower off the port bow, silent as a held breath. Kept the lights low and the hatches shut. Some work wants no audience. Closing the book. The pen stays warm.*
+
+---
+
 **Day 1841 of the voyage** · <sub>6 November 2026</sub>
 
 *Somewhere aft, a panel rattled. I have stopped asking which one. The open channels stayed quiet. Below deck, the engines ran anyway. Logging off. The stars can keep watch.*

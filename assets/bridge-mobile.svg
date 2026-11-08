@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 1355" width="640" height="1355" role="img" aria-label="Danish Roti: Frontend Engineer, Tool Builder, Fiction Writer. Ship's log, day 1841: Somewhere aft, a panel rattled. I have stopped asking which one. The open channels stayed quiet. Below deck, the engines ran anyway. Logging off. The stars can keep watch.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 1355" width="640" height="1355" role="img" aria-label="Danish Roti: Frontend Engineer, Tool Builder, Fiction Writer. Ship's log, day 1842: A meteor shower off the port bow, silent as a held breath. Kept the lights low and the hatches shut. Some work wants no audience. Closing the book. The pen stays warm.">
   <defs>
     <radialGradient id="starGlow"><stop offset="0" stop-color="#cfe0ff" stop-opacity="0.7"/><stop offset="1" stop-color="#cfe0ff" stop-opacity="0"/></radialGradient>
     <linearGradient id="vignette" x1="0" y1="0" x2="1" y2="0">
@@ -45,29 +45,29 @@
     <line x1="42" y1="423" x2="598" y2="423" stroke="#1e3a8a" stroke-opacity="0.8"/>
     <line x1="40" y1="423" x2="40" y2="1321" stroke="#38bdf8" stroke-opacity="0.3"/>
     <g opacity="1">
-      <text x="64" y="469" font-family="'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="18" letter-spacing="3" fill="#7dd3fc">DAY 1841 · 6 NOVEMBER 2026</text>
-      <text x="64" y="515" font-family="'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="24" fill="#d6ecff" clip-path="url(#w0)">Somewhere aft, a panel rattled. I</text>
-      <text x="64" y="555" font-family="'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="24" fill="#d6ecff" clip-path="url(#w1)">have stopped asking which one.</text>
-      <text x="64" y="595" font-family="'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="24" fill="#d6ecff" clip-path="url(#w2)">The open channels stayed quiet.</text>
-      <text x="64" y="635" font-family="'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="24" fill="#d6ecff" clip-path="url(#w3)">Below deck, the engines ran</text>
-      <text x="64" y="675" font-family="'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="24" fill="#d6ecff" clip-path="url(#w4)">anyway. Logging off. The stars</text>
-      <text x="64" y="715" font-family="'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="24" fill="#d6ecff" clip-path="url(#w5)">can keep watch.<tspan fill="#7dd3fc"> ▋<animate attributeName="fill-opacity" values="1;1;0;0" keyTimes="0;0.5;0.5;1" dur="1.1s" repeatCount="indefinite"/></tspan></text>
+      <text x="64" y="469" font-family="'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="18" letter-spacing="3" fill="#7dd3fc">DAY 1842 · 7 NOVEMBER 2026</text>
+      <text x="64" y="515" font-family="'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="24" fill="#d6ecff" clip-path="url(#w0)">A meteor shower off the port bow,</text>
+      <text x="64" y="555" font-family="'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="24" fill="#d6ecff" clip-path="url(#w1)">silent as a held breath. Kept the</text>
+      <text x="64" y="595" font-family="'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="24" fill="#d6ecff" clip-path="url(#w2)">lights low and the hatches shut.</text>
+      <text x="64" y="635" font-family="'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="24" fill="#d6ecff" clip-path="url(#w3)">Some work wants no audience.</text>
+      <text x="64" y="675" font-family="'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="24" fill="#d6ecff" clip-path="url(#w4)">Closing the book. The pen stays</text>
+      <text x="64" y="715" font-family="'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="24" fill="#d6ecff" clip-path="url(#w5)">warm.<tspan fill="#7dd3fc"> ▋<animate attributeName="fill-opacity" values="1;1;0;0" keyTimes="0;0.5;0.5;1" dur="1.1s" repeatCount="indefinite"/></tspan></text>
     </g>
     <g opacity="0.66">
-      <text x="64" y="781" font-family="'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="18" letter-spacing="3" fill="#7dd3fc">DAY 1840 · 5 NOVEMBER 2026</text>
-      <text x="64" y="827" font-family="'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="24" fill="#d6ecff">The hull ticked as it cooled.</text>
-      <text x="64" y="867" font-family="'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="24" fill="#d6ecff">Spotted Sadsnake1/word-smith</text>
-      <text x="64" y="907" font-family="'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="24" fill="#d6ecff">through the glass and marked it</text>
-      <text x="64" y="947" font-family="'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="24" fill="#d6ecff">on the chart. Course holds.</text>
+      <text x="64" y="781" font-family="'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="18" letter-spacing="3" fill="#7dd3fc">DAY 1841 · 6 NOVEMBER 2026</text>
+      <text x="64" y="827" font-family="'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="24" fill="#d6ecff">Somewhere aft, a panel rattled. I</text>
+      <text x="64" y="867" font-family="'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="24" fill="#d6ecff">have stopped asking which one.</text>
+      <text x="64" y="907" font-family="'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="24" fill="#d6ecff">The open channels stayed quiet.</text>
+      <text x="64" y="947" font-family="'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="24" fill="#d6ecff">Below deck, the engines ran</text>
+      <text x="64" y="987" font-family="'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="24" fill="#d6ecff">anyway. Logging off. The stars</text>
+      <text x="64" y="1027" font-family="'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="24" fill="#d6ecff">can keep watch.</text>
     </g>
     <g opacity="0.46">
-      <text x="64" y="1013" font-family="'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="18" letter-spacing="3" fill="#7dd3fc">DAY 1839 · 4 NOVEMBER 2026</text>
-      <text x="64" y="1059" font-family="'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="24" fill="#d6ecff">The radio gave us twenty minutes</text>
-      <text x="64" y="1099" font-family="'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="24" fill="#d6ecff">of static that sounded almost</text>
-      <text x="64" y="1139" font-family="'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="24" fill="#d6ecff">like rain. Drifted. Read a</text>
-      <text x="64" y="1179" font-family="'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="24" fill="#d6ecff">little. Wrote a sentence and</text>
-      <text x="64" y="1219" font-family="'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="24" fill="#d6ecff">crossed it out, which also</text>
-      <text x="64" y="1259" font-family="'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="24" fill="#d6ecff">counts. Out.</text>
+      <text x="64" y="1093" font-family="'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="18" letter-spacing="3" fill="#7dd3fc">DAY 1840 · 5 NOVEMBER 2026</text>
+      <text x="64" y="1139" font-family="'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="24" fill="#d6ecff">The hull ticked as it cooled.</text>
+      <text x="64" y="1179" font-family="'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="24" fill="#d6ecff">Spotted Sadsnake1/word-smith</text>
+      <text x="64" y="1219" font-family="'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="24" fill="#d6ecff">through the glass and marked it</text>
+      <text x="64" y="1259" font-family="'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="24" fill="#d6ecff">on the chart. Course holds.</text>
     </g>
     <text x="590" y="1301" font-family="Georgia, 'Iowan Old Style', 'Times New Roman', serif" font-style="italic" font-size="22" fill="#7dd3fc" text-anchor="end" opacity="0">— the ship’s computer<animate attributeName="opacity" to="0.8" begin="7.4s" dur="0.8s" fill="freeze"/></text>
   </g>
