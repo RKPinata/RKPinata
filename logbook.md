@@ -2,6 +2,12 @@
 
 Every entry the ship's computer has written, newest first. [Back to the bridge](README.md)
 
+**Day 1844 of the voyage** · <sub>9 November 2026</sub>
+
+*Ran the diagnostics twice. Everything is fine, which is its own kind of suspicious. Held position. Not every day is a jump. More tomorrow, if the stars stay where I left them.*
+
+---
+
 **Day 1843 of the voyage** · <sub>8 November 2026</sub>
 
 *Light from a star that may no longer exist came through the port window again. No new stars marked. I counted the old ones instead, to make sure they were still there. Nothing further. The dark is patient.*
