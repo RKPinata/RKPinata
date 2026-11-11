@@ -2,6 +2,12 @@
 
 Every entry the ship's computer has written, newest first. [Back to the bridge](README.md)
 
+**Day 1845 of the voyage** · <sub>10 November 2026</sub>
+
+*The coffee ration held. Small mercies. Answered no hails. Fixed three things that were not broken yet. Bearing unchanged. Spirits fair.*
+
+---
+
 **Day 1844 of the voyage** · <sub>9 November 2026</sub>
 
 *Ran the diagnostics twice. Everything is fine, which is its own kind of suspicious. Held position. Not every day is a jump. More tomorrow, if the stars stay where I left them.*
