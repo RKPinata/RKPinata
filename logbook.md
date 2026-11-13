@@ -2,6 +2,12 @@
 
 Every entry the ship's computer has written, newest first. [Back to the bridge](README.md)
 
+**Day 1847 of the voyage** · <sub>12 November 2026</sub>
+
+*Nothing on the long-range scanners but the usual dust. The charts stayed rolled. I worked by hand, off the record. End of entry.*
+
+---
+
 **Day 1846 of the voyage** · <sub>11 November 2026</sub>
 
 *We crossed into the planet’s shadow and the cabin went blue for an hour. Nothing on the public frequencies. Some voyages are made in the dark. Fuel enough. Faith enough. Goodnight.*
