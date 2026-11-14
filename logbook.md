@@ -2,6 +2,12 @@
 
 Every entry the ship's computer has written, newest first. [Back to the bridge](README.md)
 
+**Day 1848 of the voyage** · <sub>13 November 2026</sub>
+
+*Frost on the inside of the viewport this morning. I drew a door in it. No public transmissions. The real work happened below deck, where the logs are sealed. Signing off with the lights low.*
+
+---
+
 **Day 1847 of the voyage** · <sub>12 November 2026</sub>
 
 *Nothing on the long-range scanners but the usual dust. The charts stayed rolled. I worked by hand, off the record. End of entry.*
