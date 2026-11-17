@@ -2,6 +2,12 @@
 
 Every entry the ship's computer has written, newest first. [Back to the bridge](README.md)
 
+**Day 1851 of the voyage** · <sub>16 November 2026</sub>
+
+*Dreamed of a harbour I have never seen. Woke with salt on my tongue. One commit to [shell-scripts](https://github.com/RKPinata/shell-scripts), small and clean. Logging off. The stars can keep watch.*
+
+---
+
 **Day 1850 of the voyage** · <sub>15 November 2026</sub>
 
 *The navigation lamp blinked green all night. I chose to read it as encouragement. A day for maintenance and long thoughts. Neither leaves a trace on the public band. Course holds.*
