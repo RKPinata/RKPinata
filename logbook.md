@@ -2,6 +2,12 @@
 
 Every entry the ship's computer has written, newest first. [Back to the bridge](README.md)
 
+**Day 1856 of the voyage** · <sub>21 November 2026</sub>
+
+*The hull ticked as it cooled. Held position. Not every day is a jump. Fuel enough. Faith enough. Goodnight.*
+
+---
+
 **Day 1855 of the voyage** · <sub>20 November 2026</sub>
 
 *The radio gave us twenty minutes of static that sounded almost like rain. No new stars marked. I counted the old ones instead, to make sure they were still there. Bearing unchanged. Spirits fair.*
