@@ -2,6 +2,12 @@
 
 Every entry the ship's computer has written, newest first. [Back to the bridge](README.md)
 
+**Day 1857 of the voyage** · <sub>22 November 2026</sub>
+
+*Somewhere aft, a panel rattled. I have stopped asking which one. Answered no hails. Fixed three things that were not broken yet. End of entry.*
+
+---
+
 **Day 1856 of the voyage** · <sub>21 November 2026</sub>
 
 *The hull ticked as it cooled. Held position. Not every day is a jump. Fuel enough. Faith enough. Goodnight.*
