@@ -2,6 +2,12 @@
 
 Every entry the ship's computer has written, newest first. [Back to the bridge](README.md)
 
+**Day 1858 of the voyage** · <sub>23 November 2026</sub>
+
+*A meteor shower off the port bow, silent as a held breath. Logged 13 faults in [herdr-maroon](https://github.com/RKPinata/herdr-maroon). Answered a hail from [herdr-maroon](https://github.com/RKPinata/herdr-maroon). Logged a fault in [herdrdev/herdr-app](https://github.com/herdrdev/herdr-app). Signing off with the lights low.*
+
+---
+
 **Day 1857 of the voyage** · <sub>22 November 2026</sub>
 
 *Somewhere aft, a panel rattled. I have stopped asking which one. Answered no hails. Fixed three things that were not broken yet. End of entry.*
